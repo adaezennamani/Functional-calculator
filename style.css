@@ -1,0 +1,88 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: normal;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(to left, red, gold);
+}
+
+.calculator-grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  /*four columns, 100px wide*/
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+  /*at minimum,div will be a 120px high,but at maximum,it'll will be auto will means as long as it needs to fit all the numbers that will be inputed in it, then it'll be 5 per row*/
+}
+
+.calculator-grid>button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, .75);
+}
+
+.calculator-grid>button:hover {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.output {
+  grid-column: 1 / -1;
+  /* that is from column 1 to column -1 which the last column, means it covers from column 1 to the last column*/
+  background-color: rgba(0, 0, 0, .75);
+  display: flex;
+  /*aligning items inside the text space or output*/
+  align-items: flex-end;
+  justify-content: space-around;
+  /*push the element a little closer to each other and a little further away from the top*/
+  flex-direction: column;
+  /*two divs will be on top of each other instead of side by side*/
+  padding: 10px;
+  /*so everything won't be pushed up to the end of the container*/
+  word-wrap: break-word;
+  /*break if the numbers in the output-div get too long*/
+  word-break: break-all;
+  /*if a number gets too long, it'll just wrap to the next line*/
+}
+
+.output .previous-operand {
+  color: rgba(255, 255, 255, .75);
+  font-size: 1.5rem;
+}
+
+.output .current-operand {
+  color: white;
+  font-size: 2.5rem;
+}
+
+@media (max-width: 600px) {
+body {
+  background: linear-gradient(to right, blue, red, gold);
+}
+  .calculator-grid {
+    grid-template-columns: repeat(4, 70px);
+    grid-template-rows: minmax(100px, auto) repeat(5, 60px);
+  }
+
+  .calculator-grid>button {
+    font-size: 1.5rem;
+  }
+
+  .output {
+    font-size: 1.5rem;
+    padding: 5px;
+  }
+}
